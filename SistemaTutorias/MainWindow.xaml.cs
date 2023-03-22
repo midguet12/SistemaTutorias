@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SistemaTutorias.Domain;
 using System.Diagnostics;
+using System.Security.Cryptography;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SistemaTutorias
 {
@@ -32,15 +34,27 @@ namespace SistemaTutorias
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
+            
             UserDAO userDao = new UserDAO();
-
             User user = userDao.getUser(usernameText.Text);
 
-            string password = passwordText.Text;
 
-            string passwordDb = user.password;
+            //Hasheo de contraseña
+            var sha = new System.Security.Cryptography.SHA256Managed();
+            byte[] preHasheado = Encoding.UTF8.GetBytes(passwordText.Password.ToString());
+            byte[] hashBytes = sha.ComputeHash(preHasheado);
+            string password = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
 
-            Debug.WriteLine(password + " " + passwordDb);
+            if (password == user.password) {
+
+                Debug.WriteLine(user.usertype.ToString());
+                
+                
+            } else
+            {
+                wrongPassword.Content = "Contraseña Incorrecta";
+                wrongPassword.Foreground = Brushes.Red;
+           }
 
         }
     }
