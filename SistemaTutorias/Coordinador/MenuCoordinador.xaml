@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MenuCoordinador" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="administrarEstudiantes" Content="Administrar estudiantes" HorizontalAlignment="Left" Margin="66,139,0,0" VerticalAlignment="Top" Height="34" Width="157" Click="administrarEstudiantes_Click"/>
+        <Button x:Name="administrarTutoresAcademicos" Content="Administrar Tutores Academicos" HorizontalAlignment="Left" Margin="296,139,0,0" VerticalAlignment="Top" Height="34" Width="192"/>
+        <Button Content="Asignar tutores academicos" HorizontalAlignment="Left" Margin="566,139,0,0" VerticalAlignment="Top" Height="34" Width="185"/>
     </Grid>
 </Window>

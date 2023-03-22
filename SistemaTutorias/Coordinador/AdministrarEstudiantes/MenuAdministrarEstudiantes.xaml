@@ -1,0 +1,14 @@
+﻿<Window x:Class="SistemaTutorias.Coordinador.AdministrarEstudiantes.MenuAdministrarEstudiantes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaTutorias.Coordinador.AdministrarEstudiantes"
+        mc:Ignorable="d"
+        Title="MenuAdministrarEstudiantes" Height="450" Width="800">
+    <Grid>
+        <Label Content="Estudiantes" HorizontalAlignment="Left" Margin="244,10,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <DataGrid x:Name="tabla" Margin="94,97,143,137" />
+
+    </Grid>
+</Window>

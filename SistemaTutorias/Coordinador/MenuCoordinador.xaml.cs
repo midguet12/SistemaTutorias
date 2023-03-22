@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SistemaTutorias.Coordinador.AdministrarEstudiantes;
 
 namespace SistemaTutorias.Coordinador
 {
@@ -19,9 +20,22 @@ namespace SistemaTutorias.Coordinador
     /// </summary>
     public partial class MenuCoordinador : Window
     {
+        
+
         public MenuCoordinador()
         {
             InitializeComponent();
+
+        }
+
+        private void administrarEstudiantes_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            MenuAdministrarEstudiantes administrarEstudiantes = new MenuAdministrarEstudiantes();
+            administrarEstudiantes.Show();
+
+
         }
     }
 }
