@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="1200px-Logo_de_la_Universidad_Veracruzana.svg.png" />
+    <Resource Include="Media\1200px-Logo_de_la_Universidad_Veracruzana.svg.png" />
   </ItemGroup>
 
 </Project>

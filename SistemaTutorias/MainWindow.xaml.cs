@@ -17,6 +17,7 @@ using SistemaTutorias.Domain;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Diagnostics.CodeAnalysis;
+using SistemaTutorias.Coordinador;
 
 namespace SistemaTutorias
 {
@@ -51,6 +52,10 @@ namespace SistemaTutorias
                     case 1:
                         break;
                     case 2:
+                        MenuCoordinador menuCoordinador = new MenuCoordinador();
+                        menuCoordinador.Show();
+                        this.Close();
+
                         break;
                     case 3:
                         break;
