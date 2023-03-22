@@ -8,10 +8,21 @@ namespace SistemaTutorias.Domain
 {
     internal class User
     {
-       
+        
+        
         public string username { get; set; }
         public string password { get; set; }
-        public string usertype { get; set; }
+        public int usertype { get; set; }
+
+        public User() { 
         
+        
+        }
+        public User(string username, string password, int usertype) { 
+            this.username = username;
+            this.password = password;
+            this.usertype = usertype;   
+
+        }
     }
 }

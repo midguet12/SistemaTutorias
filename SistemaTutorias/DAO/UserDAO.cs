@@ -13,41 +13,44 @@ namespace SistemaTutorias.DAO
     {
         string connectionString = "Server=MB1,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt22081998;";
         public UserDAO() {
-
-
-            
-             
-            
+           
         
         }
 
-        public User prueba()
+        public User getUser(string username)
         {
-
+            User user = new User();
             try
             {
                 SqlConnection connection = new SqlConnection(connectionString);
 
-                SqlCommand command = new SqlCommand("Select * from [dbo].[User]", connection);
+                SqlCommand command = new SqlCommand("Select * from [dbo].[User] where username = '" + username + "'", connection);
 
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.HasRows) { 
-                    
+                if (reader.HasRows)
+                {
+
                     while (reader.Read())
                     {
-                        Debug.WriteLine(reader.GetString(0) + reader.GetString(1));
+                        
 
+                        user = new User(
+                            reader.GetString(0),
+                            reader.GetString(1),
+                            reader.GetInt32(2)
+                            );
                     }
-                    
+
                 }
                 else
                 {
-                    Debug.WriteLine("Sin filas");
+                    Debug.WriteLine("Sin usuarios");
                 }
 
                 reader.Close();
+
 
             }
             catch (Exception error)
@@ -55,7 +58,8 @@ namespace SistemaTutorias.DAO
                 Debug.WriteLine(error.Message);
                 throw;
             }
-            return new User();
+
+            return user;
         }
     }
 }

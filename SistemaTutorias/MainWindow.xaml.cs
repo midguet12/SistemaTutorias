@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SistemaTutorias.Domain;
+using System.Diagnostics;
 
 namespace SistemaTutorias
 {
@@ -30,9 +32,16 @@ namespace SistemaTutorias
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            UserDAO user = new UserDAO();
+            UserDAO userDao = new UserDAO();
 
-            user.prueba();
+            User user = userDao.getUser(usernameText.Text);
+
+            string password = passwordText.Text;
+
+            string passwordDb = user.password;
+
+            Debug.WriteLine(password + " " + passwordDb);
+
         }
     }
 }

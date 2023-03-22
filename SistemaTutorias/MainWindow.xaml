@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Iniciar sesion" Height="510" Width="333">
     <Grid Background="Black" Height="NaN" Margin="0,0,0,-6" Width="NaN">
-        <TextBox x:Name="userText"  HorizontalAlignment="Center" Margin="0,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216"/>
-        <TextBox x:Name="password" HorizontalAlignment="Center" Margin="0,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216"/>
+        <TextBox x:Name="usernameText"  HorizontalAlignment="Center" Margin="0,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216"/>
+        <TextBox x:Name="passwordText" HorizontalAlignment="Center" Margin="0,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216"/>
         <Image HorizontalAlignment="Center" Height="135" Margin="0,70,0,0" VerticalAlignment="Top" Width="100" Source="/1200px-Logo_de_la_Universidad_Veracruzana.svg.png"/>
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="58,0,0,0" VerticalAlignment="Center" Foreground="White"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="58,283,0,0" VerticalAlignment="Top" Foreground="White"/>
