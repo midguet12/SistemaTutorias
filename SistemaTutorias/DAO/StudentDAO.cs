@@ -12,7 +12,7 @@ namespace SistemaTutorias.DAO
 
     internal class StudentDAO
     {
-        string connectionString = "Server=MB1,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt22081998;";
+        string connectionString = "Server=DESKTOP-JKKF8L6,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt22081998;";
 
         public StudentDAO()
         {
@@ -42,7 +42,8 @@ namespace SistemaTutorias.DAO
                             reader.GetString(1),
                             reader.GetString(2),
                             reader.GetString(3),
-                            reader.GetString(4)
+                            reader.GetString(4),
+                            reader.GetString(5)
                         ));
                        
                     }
@@ -54,11 +55,6 @@ namespace SistemaTutorias.DAO
                 }
 
                 reader.Close();
-
-
-
-
-
             }
             catch (Exception error)
             {

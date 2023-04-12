@@ -11,7 +11,7 @@ namespace SistemaTutorias.DAO
 {
     internal class UserDAO
     {
-        string connectionString = "Server=MB1,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt22081998;";
+        string connectionString = "Server=DESKTOP-JKKF8L6,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt22081998;";
         public UserDAO() {
            
         

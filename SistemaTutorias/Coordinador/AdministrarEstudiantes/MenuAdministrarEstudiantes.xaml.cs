@@ -2,6 +2,7 @@
 using SistemaTutorias.Domain;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,18 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
             
             StudentDAO studentDAO = new StudentDAO();   
             
-            tabla.ItemsSource = studentDAO.getStudents();
+            table.ItemsSource = studentDAO.getStudents();
+
+            for (int i = 0; i < table.Columns.Count; i++)
+            {
+                table.Columns[i].Width = DataGridLength.Auto;
+            }
+
+            //table.Width
+
+            
+
+
         }
 
        

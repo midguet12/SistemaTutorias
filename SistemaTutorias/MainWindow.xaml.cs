@@ -46,6 +46,8 @@ namespace SistemaTutorias
             byte[] hashBytes = sha.ComputeHash(preHasheado);
             string password = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
 
+            
+
             if (password == user.password) {
 
                 switch (user.usertype) {
@@ -71,5 +73,7 @@ namespace SistemaTutorias
            }
 
         }
+
+        
     }
 }
