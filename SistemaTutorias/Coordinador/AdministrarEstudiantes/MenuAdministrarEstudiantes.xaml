@@ -22,6 +22,7 @@
                 <DataGridTextColumn Header="Correo Institucional" Binding="{Binding Path=correoInstitucional}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="editarEstudiante" Content="Editar Estudiante" HorizontalAlignment="Left" Margin="116,356,0,0" VerticalAlignment="Top" Height="29" Width="99"/>
 
     </Grid>
 </Window>

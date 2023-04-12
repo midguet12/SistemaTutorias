@@ -35,7 +35,7 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
                 table.Columns[i].Width = DataGridLength.Auto;
             }
 
-            //table.Width
+            
 
             
 
