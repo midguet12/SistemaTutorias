@@ -18,13 +18,56 @@ namespace SistemaTutorias.DAO
         {
 
         }
+        public Student getStudent(string matricula)
+        {
+            Student student = null;
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                
+
+                SqlCommand command = new SqlCommand("Select * from [dbo].[Student] where matricula = '" + matricula + "'", connection);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    //student = new Student(reader.GetString(0));
+
+                    string prueba = reader.GetString(0);
+                    Debug.WriteLine(prueba);
+                   
+
+                }
+                else
+                {
+                    Debug.WriteLine("Sin datos");
+                }
+
+                reader.Close();
+            }
+            catch (Exception error)
+            {
+                Debug.WriteLine(error.Message);
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return student;
+        }
+
         public List<Student> getStudents()
         {
             List<Student> listStudents = new List<Student>();
-
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
-                SqlConnection connection = new SqlConnection(connectionString);
+                
 
                 SqlCommand command = new SqlCommand("Select * from [dbo].[Student]", connection);
 
@@ -60,6 +103,10 @@ namespace SistemaTutorias.DAO
             {
                 Debug.WriteLine(error.Message);
                 throw;
+            }
+            finally
+            {
+                connection.Close();
             }
             return listStudents;
         }

@@ -14,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SistemaTutorias.Coordinador.AdministrarEstudiantes.Editar;
+using System.Printing;
 
 namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
 {
@@ -30,18 +32,25 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
             
             table.ItemsSource = studentDAO.getStudents();
 
-            for (int i = 0; i < table.Columns.Count; i++)
-            {
-                table.Columns[i].Width = DataGridLength.Auto;
-            }
-
-            
-
-            
-
 
         }
 
-       
+        private void editarEstudiante_Click(object sender, RoutedEventArgs e)
+        {
+            if (table.SelectedItem == null)
+            {
+                Debug.WriteLine("Selecciona un estudiante");
+            }
+
+            if (table.SelectedItem != null)
+            {
+                Student student = (Student)table.SelectedItem;
+                Debug.WriteLine(student.matricula);
+
+                EditarEstudiante editarEstudiante = new EditarEstudiante(student.matricula);
+                editarEstudiante.Show();
+            } 
+            
+        }
     }
 }

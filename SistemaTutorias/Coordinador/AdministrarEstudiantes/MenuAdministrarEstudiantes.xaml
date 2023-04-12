@@ -14,15 +14,15 @@
         <Label Content="Estudiantes" HorizontalAlignment="Left" Margin="262,24,0,0" VerticalAlignment="Top" FontSize="48"/>
         <DataGrid x:Name="table" Margin="61,117,37,117" AutoGenerateColumns="False" IsReadOnly="true" CanUserAddRows="false" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Path=nombre}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding Path=apellidoPaterno}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Apellido Materno" Binding="{Binding Path=apellidoMaterno}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Matricula" Binding="{Binding Path=matricula}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Programa Educativo" Binding="{Binding Path=programaEducativo}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Correo Institucional" Binding="{Binding Path=correoInstitucional}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Path=nombre}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding Path=apellidoPaterno}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Apellido Materno" Binding="{Binding Path=apellidoMaterno}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Matricula" Binding="{Binding Path=matricula}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Programa Educativo" Binding="{Binding Path=programaEducativo}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Correo Institucional" Binding="{Binding Path=correoInstitucional}" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="editarEstudiante" Content="Editar Estudiante" HorizontalAlignment="Left" Margin="116,356,0,0" VerticalAlignment="Top" Height="29" Width="99"/>
+        <Button x:Name="editarEstudiante" Content="Editar Estudiante" HorizontalAlignment="Left" Margin="116,356,0,0" VerticalAlignment="Top" Height="29" Width="99" Click="editarEstudiante_Click"/>
 
     </Grid>
 </Window>
