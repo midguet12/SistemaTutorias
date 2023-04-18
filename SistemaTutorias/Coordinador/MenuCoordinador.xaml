@@ -10,5 +10,6 @@
         <Button x:Name="administrarEstudiantes" Content="Administrar estudiantes" HorizontalAlignment="Left" Margin="66,139,0,0" VerticalAlignment="Top" Height="34" Width="157" Click="administrarEstudiantes_Click"/>
         <Button x:Name="administrarTutoresAcademicos" Content="Administrar Tutores Academicos" HorizontalAlignment="Left" Margin="296,139,0,0" VerticalAlignment="Top" Height="34" Width="192"/>
         <Button Content="Asignar tutores academicos" HorizontalAlignment="Left" Margin="566,139,0,0" VerticalAlignment="Top" Height="34" Width="185"/>
+        <Button x:Name="cerrarSesion" Content="Cerrar sesion" HorizontalAlignment="Left" Margin="670,26,0,0" VerticalAlignment="Top" Height="21" Width="95" Background="Red" Foreground="White" FontWeight="Bold" Click="Button_Click" RenderTransformOrigin="0.49,0.546"/>
     </Grid>
 </Window>

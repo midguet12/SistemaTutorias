@@ -8,7 +8,7 @@
         Title="EditarEstudiante" Height="632" Width="672">
     <Grid>
         <Label Content="Editar Estudiante" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <Button x:Name="save" Content="Guardar" HorizontalAlignment="Center" Margin="0,493,0,0" VerticalAlignment="Top" Height="47" Width="122" FontSize="24"/>
+        <Button x:Name="save" Content="Guardar" HorizontalAlignment="Center" Margin="0,493,0,0" VerticalAlignment="Top" Height="47" Width="122" FontSize="24" Click="save_Click"/>
         <Label Content="Nombre:" HorizontalAlignment="Left" Margin="70,167,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Apellido Paterno:" HorizontalAlignment="Left" Margin="70,228,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Apellido Materno" HorizontalAlignment="Left" Margin="70,281,0,0" VerticalAlignment="Top" FontSize="18"/>

@@ -28,26 +28,26 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
         {
             InitializeComponent();
             
-            StudentDAO studentDAO = new StudentDAO();   
-            
-            table.ItemsSource = studentDAO.getStudents();
+            EstudianteDAO estudianteDAO = new EstudianteDAO();
+
+            tabla.ItemsSource = estudianteDAO.getEstudiantes() ;
 
 
         }
 
         private void editarEstudiante_Click(object sender, RoutedEventArgs e)
         {
-            if (table.SelectedItem == null)
+            if (tabla.SelectedItem == null)
             {
                 Debug.WriteLine("Selecciona un estudiante");
             }
 
-            if (table.SelectedItem != null)
+            if (tabla.SelectedItem != null)
             {
-                Student student = (Student)table.SelectedItem;
-                Debug.WriteLine(student.matricula);
+                Estudiante estudiante = (Estudiante)tabla.SelectedItem;
+                Debug.WriteLine($"Estudiante con matricula: {estudiante.matricula} seleccionado");
 
-                EditarEstudiante editarEstudiante = new EditarEstudiante(student.matricula);
+                EditarEstudiante editarEstudiante = new EditarEstudiante(estudiante.matricula);
                 editarEstudiante.Show();
             } 
             

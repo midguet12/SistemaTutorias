@@ -12,7 +12,7 @@
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="58,0,0,0" VerticalAlignment="Center" Foreground="White"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="58,283,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Button x:Name="login" Content="Iniciar Sesion" HorizontalAlignment="Left" Margin="116,365,0,0" VerticalAlignment="Top" Click="login_Click"/>
-        <Label x:Name="wrongPassword" Content="" HorizontalAlignment="Left" Margin="83,433,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="contrasenaIncorrecta" Content="" HorizontalAlignment="Left" Margin="83,433,0,0" VerticalAlignment="Top"/>
         <PasswordBox x:Name="passwordText" HorizontalAlignment="Center" Margin="0,314,0,0" VerticalAlignment="Top" Width="216" Password="Magt22081998"/>
 
     </Grid>

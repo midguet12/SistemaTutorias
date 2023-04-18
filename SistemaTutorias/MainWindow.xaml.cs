@@ -36,21 +36,21 @@ namespace SistemaTutorias
         private void login_Click(object sender, RoutedEventArgs e)
         {
             
-            UserDAO userDao = new UserDAO();
-            User user = userDao.getUser(usernameText.Text);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.getUsuario(usernameText.Text);
 
 
             //Hasheo de contraseña
             var sha = new System.Security.Cryptography.SHA256Managed();
             byte[] preHasheado = Encoding.UTF8.GetBytes(passwordText.Password.ToString());
             byte[] hashBytes = sha.ComputeHash(preHasheado);
-            string password = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
+            string contrasena = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
 
             
 
-            if (password == user.password) {
+            if (contrasena == usuario.contrasena) {
 
-                switch (user.usertype) {
+                switch (usuario.tipoUsuario) {
                     case 1:
                         break;
                     case 2:
@@ -68,8 +68,9 @@ namespace SistemaTutorias
                 
             } else
             {
-                wrongPassword.Content = "Contraseña Incorrecta";
-                wrongPassword.Foreground = Brushes.Red;
+                
+                contrasenaIncorrecta.Content = "Contraseña Incorrecta";
+                contrasenaIncorrecta.Foreground = Brushes.Red;
            }
 
         }

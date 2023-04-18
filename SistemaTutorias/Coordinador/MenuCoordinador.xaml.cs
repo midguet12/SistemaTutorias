@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SistemaTutorias.Coordinador.AdministrarEstudiantes;
+using SistemaTutorias;
 
 namespace SistemaTutorias.Coordinador
 {
@@ -36,6 +37,13 @@ namespace SistemaTutorias.Coordinador
             administrarEstudiantes.Show();
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

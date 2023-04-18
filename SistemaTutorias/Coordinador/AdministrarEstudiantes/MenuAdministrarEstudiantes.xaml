@@ -12,7 +12,7 @@
             <ColumnDefinition Width="151*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Estudiantes" HorizontalAlignment="Left" Margin="262,24,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <DataGrid x:Name="table" Margin="61,117,37,117" AutoGenerateColumns="False" IsReadOnly="true" CanUserAddRows="false" Grid.ColumnSpan="2">
+        <DataGrid x:Name="tabla" Margin="61,117,37,117" AutoGenerateColumns="False" IsReadOnly="true" CanUserAddRows="false" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Path=nombre}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding Path=apellidoPaterno}" Width="auto"></DataGridTextColumn>
