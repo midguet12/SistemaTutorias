@@ -21,6 +21,71 @@ namespace SistemaTutorias.DAO
 
         }
 
+        public Boolean eliminarEstudiante(Estudiante estudiante)
+        {
+            Boolean registrado = false;
+            Int32 contador;
+            SqlConnection conexion = new SqlConnection(cadenaDeConexion);
+            SqlCommand comando;
+
+            try
+            {
+                comando = new SqlCommand($"delete from Estudiante where matricula = '{estudiante.matricula}';", conexion);
+                conexion.Open();
+                contador = comando.ExecuteNonQuery();
+
+                if (contador != 0)
+                {
+                    Debug.WriteLine($"Se eliminaron: {contador} estudiantes");
+                    registrado = true;
+                }
+            }
+            catch (Exception error)
+            {
+                Debug.WriteLine(error.Message);
+                return registrado = false;
+                throw;
+            } finally { conexion.Close(); }
+
+            return true;
+        }
+
+        public Boolean registrarEstudiante(Estudiante estudiante)
+        {
+            Boolean registrado = false;
+            Int32 contador;
+            SqlConnection conexion = new SqlConnection(cadenaDeConexion);
+            SqlCommand comando;
+
+            try
+            {
+                comando = new SqlCommand($"INSERT INTO Estudiante " +
+                    $"VALUES ('{estudiante.nombre}'," +
+                    $"'{estudiante.apellidoPaterno}'," +
+                    $"'{estudiante.apellidoMaterno}'," +
+                    $"'{estudiante.matricula}'," +
+                    $"'{estudiante.programaEducativo}', " +
+                    $"'zs{estudiante.matricula}@estudiantes.uv.mx');", conexion);
+                conexion.Open();
+                contador = comando.ExecuteNonQuery();
+
+                if (contador !=0)
+                {
+                    Debug.WriteLine($"Se registraron: {contador} estudiantes");
+                    registrado = true;
+                }
+            }
+            catch (Exception error)
+            {
+                Debug.WriteLine(error.Message);
+                return registrado = false;
+                throw;
+            } finally { conexion.Close(); } 
+
+
+            return registrado;
+        }
+
         public Boolean actualizarEstudiante(Estudiante estudiante)
         {
             Boolean actualizado = false;
@@ -37,9 +102,7 @@ namespace SistemaTutorias.DAO
 
                 if (contador!=0)
                 {
-
                     Debug.WriteLine($"Se actualizaron: {contador} lineas");
-
                     actualizado = true;
 
                 }
@@ -52,9 +115,10 @@ namespace SistemaTutorias.DAO
             }
             catch (Exception error)
             {
-
                 Debug.WriteLine(error.Message);
+                return actualizado = false;
                 throw;
+                
             }
             finally
             {

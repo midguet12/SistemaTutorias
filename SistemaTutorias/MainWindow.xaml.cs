@@ -37,7 +37,17 @@ namespace SistemaTutorias
         {
             
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            Usuario usuario = usuarioDAO.getUsuario(usernameText.Text);
+            Usuario usuario;
+            try
+            {
+                usuario = usuarioDAO.getUsuario(usernameText.Text);
+            }
+            catch (Exception error)
+            {
+                contrasenaIncorrecta.Content = error.Message + "Conexion perdida";
+                throw;
+            }
+            
 
 
             //Hasheo de contraseña

@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SistemaTutorias.Coordinador.AdministrarEstudiantes.Editar;
 using System.Printing;
+using System.Windows.Forms;
+using SistemaTutorias.Coordinador.AdministrarEstudiantes.Registrar;
 
 namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
 {
@@ -24,11 +26,12 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
     /// </summary>
     public partial class MenuAdministrarEstudiantes : Window
     {
+        EstudianteDAO estudianteDAO;
         public MenuAdministrarEstudiantes()
         {
             InitializeComponent();
             
-            EstudianteDAO estudianteDAO = new EstudianteDAO();
+             estudianteDAO = new EstudianteDAO();
 
             tabla.ItemsSource = estudianteDAO.getEstudiantes() ;
 
@@ -40,6 +43,9 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
             if (tabla.SelectedItem == null)
             {
                 Debug.WriteLine("Selecciona un estudiante");
+                MessageBoxButtons botones = MessageBoxButtons.OK;
+                DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Escoge un estudiante", "Confirmacion", botones);
+
             }
 
             if (tabla.SelectedItem != null)
@@ -48,9 +54,73 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
                 Debug.WriteLine($"Estudiante con matricula: {estudiante.matricula} seleccionado");
 
                 EditarEstudiante editarEstudiante = new EditarEstudiante(estudiante.matricula);
-                editarEstudiante.Show();
+                
+
+                bool senalDeCerrado = (bool)editarEstudiante.ShowDialog();
+
+               
+                if (!senalDeCerrado)
+                {
+                    
+                    tabla.ItemsSource = estudianteDAO.getEstudiantes();
+                }
+
+                
+                
             } 
             
+        }
+
+        
+
+        private void registrarEstudiante_Click_1(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Abriendo ventana de Registrar estudiante");
+            RegistrarEstudiante registrarEstudiante = new RegistrarEstudiante();
+
+            bool senalCerrado = (bool)registrarEstudiante.ShowDialog();
+
+            if (!senalCerrado)
+            {
+                tabla.ItemsSource = estudianteDAO.getEstudiantes();
+            }
+
+
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxButtons botones = MessageBoxButtons.OK;
+
+            if (tabla.SelectedItem == null)
+            {
+                Debug.WriteLine("Selecciona un estudiante");
+                
+                DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Escoge un estudiante", "Confirmacion", botones);
+
+            }
+
+            if (tabla.SelectedItem != null)
+            {
+                Estudiante estudiante = (Estudiante)tabla.SelectedItem;
+                Debug.WriteLine($"Eliminando Estudiante: {estudiante.matricula}");
+                DialogResult dialogResult;
+                
+               
+
+                if (estudianteDAO.eliminarEstudiante(estudiante))
+                {
+                    dialogResult = System.Windows.Forms.MessageBox.Show($"Estudiante {estudiante.nombre} eliminado correctamente");
+
+                    if (dialogResult.ToString() == "OK")
+                    {
+                        tabla.ItemsSource = estudianteDAO.getEstudiantes();
+                    }
+                    
+                }
+
+                
+            }
         }
     }
 }

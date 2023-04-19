@@ -8,10 +8,9 @@
         Title="MenuAdministrarEstudiantes" Height="450" Width="817">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="649*"/>
-            <ColumnDefinition Width="151*"/>
+
         </Grid.ColumnDefinitions>
-        <Label Content="Estudiantes" HorizontalAlignment="Left" Margin="262,24,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <Label Content="Estudiantes" HorizontalAlignment="Left" Margin="262,24,0,0" VerticalAlignment="Top" FontSize="48" Height="74" Width="251"/>
         <DataGrid x:Name="tabla" Margin="61,117,37,117" AutoGenerateColumns="False" IsReadOnly="true" CanUserAddRows="false" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Path=nombre}" Width="auto"></DataGridTextColumn>
@@ -22,7 +21,9 @@
                 <DataGridTextColumn Header="Correo Institucional" Binding="{Binding Path=correoInstitucional}" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="editarEstudiante" Content="Editar Estudiante" HorizontalAlignment="Left" Margin="116,356,0,0" VerticalAlignment="Top" Height="29" Width="99" Click="editarEstudiante_Click"/>
+        <Button x:Name="editarEstudiante" Content="Editar Estudiante" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Height="29" Width="121" Click="editarEstudiante_Click"/>
+        <Button x:Name="registrarEstudiante" Content="Registrar Estudiante" HorizontalAlignment="Left" Margin="138,355,0,0" VerticalAlignment="Top" Height="29" Width="121" Click="registrarEstudiante_Click_1"/>
+        <Button x:Name="delete" Content="Eliminar" HorizontalAlignment="Left" Margin="579,355,0,0" VerticalAlignment="Top" Width="121" Height="29" Background="Red" Foreground="White" FontWeight="Bold" Click="delete_Click"/>
 
     </Grid>
 </Window>

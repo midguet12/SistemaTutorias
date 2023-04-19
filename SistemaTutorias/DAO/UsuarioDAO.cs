@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -27,6 +30,8 @@ namespace SistemaTutorias.DAO
                 SqlCommand comando = new SqlCommand($"Select * from [dbo].[Usuario] where username = '{nombreUsuario}'", conexion);
 
                 conexion.Open();
+
+                
                 lector = comando.ExecuteReader();
 
                 if (lector.HasRows)
@@ -48,24 +53,23 @@ namespace SistemaTutorias.DAO
                 {
                     Debug.WriteLine("Sin usuarios");
                 }
+            }
 
-                lector.Close();
+            catch (SqlException error)
+            {
 
+                Debug.WriteLine("Error de conexion: " + error.Message);
+                throw;
 
             }
             catch (Exception error)
             {
-                conexion.Close();
-                Debug.WriteLine(error.Message);
-                throw;
-                
+                Debug.WriteLine("Error desconocido: " + error.Message);
             }
             finally
             {
                 conexion.Close();
             }
-
-
 
             return usuario;
 

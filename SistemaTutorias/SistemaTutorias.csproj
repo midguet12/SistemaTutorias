@@ -5,11 +5,12 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
+    
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="1200px-Logo_de_la_Universidad_Veracruzana.svg.png" />
-    <None Remove="Emergentes\png-transparent-pattaya-real-estate-quality-property-renting-dove-angle-leaf-text.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Emergentes\png-transparent-pattaya-real-estate-quality-property-renting-dove-angle-leaf-text.png" />
     <Resource Include="Media\1200px-Logo_de_la_Universidad_Veracruzana.svg.png" />
   </ItemGroup>
 

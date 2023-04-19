@@ -16,34 +16,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-
-
-namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Editar
+namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Registrar
 {
     /// <summary>
-    /// Lógica de interacción para EditarEstudiante.xaml
+    /// Lógica de interacción para RegistrarEstudiante.xaml
     /// </summary>
-    public partial class EditarEstudiante : Window
+    public partial class RegistrarEstudiante : Window
     {
         Estudiante estudiante;
         EstudianteDAO estudianteDAO;
-        public EditarEstudiante(string matricula)
+        public RegistrarEstudiante()
         {
             InitializeComponent();
 
+            estudiante = new Estudiante();
             estudianteDAO = new EstudianteDAO();
-
-            estudiante = estudianteDAO.getEstudiante(matricula);
-
-            nombreTextBox.Text = estudiante.nombre.ToString();
-            apellidoPaternoTextBox.Text = estudiante.apellidoPaterno.ToString();
-            apellidoMaternoTextBox.Text = estudiante.apellidoMaterno.ToString();
-            matriculaTextBox.Text = estudiante.matricula.ToString();
-            programaEducativoTextBox.Text = estudiante.programaEducativo.ToString();
-
         }
 
-        private void save_Click(object sender, RoutedEventArgs e)
+        private void insert_Click(object sender, RoutedEventArgs e)
         {
             estudiante.nombre = nombreTextBox.Text;
             estudiante.apellidoPaterno = apellidoPaternoTextBox.Text;
@@ -53,23 +43,20 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Editar
 
             MessageBoxButtons botones = MessageBoxButtons.OK;
             DialogResult dialogResult;
-            if (estudianteDAO.actualizarEstudiante(estudiante))
+
+            if (estudianteDAO.registrarEstudiante(estudiante))
             {
-                dialogResult = System.Windows.Forms.MessageBox.Show("Se han actualizado los datos","Confirmacion", botones);
+                dialogResult = System.Windows.Forms.MessageBox.Show("Se han registrado un nuevo Estudiante", "Confirmacion", botones);
                 Debug.WriteLine(dialogResult);
                 this.Close();
-
 
             }
             else
             {
-                dialogResult = System.Windows.Forms.MessageBox.Show("Fallido", "No se han actualizado los datos", botones);
+                dialogResult = System.Windows.Forms.MessageBox.Show("Fallido", "No se ha registrado el estudiante", botones);
                 Debug.WriteLine(dialogResult);
-                
                 this.Close();
             }
-            
-
         }
     }
 }
