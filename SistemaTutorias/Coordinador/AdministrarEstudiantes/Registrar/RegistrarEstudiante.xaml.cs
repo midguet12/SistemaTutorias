@@ -36,6 +36,7 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Registrar
 
         private void insert_Click(object sender, RoutedEventArgs e)
         {
+           
             estudiante.nombre = nombreTextBox.Text;
             estudiante.apellidoPaterno = apellidoPaternoTextBox.Text;
             estudiante.apellidoMaterno = apellidoMaternoTextBox.Text;
@@ -65,18 +66,6 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Registrar
                 Debug.WriteLine(dialogResult);
                 
             }
-
-            /*if (estudianteDAO.registrarEstudiante(estudiante))
-            {
-                dialogResult = System.Windows.Forms.MessageBox.Show("Se han registrado un nuevo Estudiante", "Confirmacion", botones);
-                Debug.WriteLine(dialogResult);
-                this.Close();
-
-            }
-            else
-            {
-                
-            }*/
         }
     }
 }
