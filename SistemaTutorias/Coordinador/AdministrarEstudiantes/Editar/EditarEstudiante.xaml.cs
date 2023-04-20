@@ -27,6 +27,7 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Editar
     {
         Estudiante estudiante;
         EstudianteDAO estudianteDAO;
+        String matriculaPrevia;
         public EditarEstudiante(string matricula)
         {
             InitializeComponent();
@@ -38,6 +39,9 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Editar
             nombreTextBox.Text = estudiante.nombre.ToString();
             apellidoPaternoTextBox.Text = estudiante.apellidoPaterno.ToString();
             apellidoMaternoTextBox.Text = estudiante.apellidoMaterno.ToString();
+
+            matriculaPrevia = estudiante.matricula.ToString();
+
             matriculaTextBox.Text = estudiante.matricula.ToString();
             programaEducativoTextBox.Text = estudiante.programaEducativo.ToString();
 
@@ -45,15 +49,21 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Editar
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("Obteniendo datos nuevos");
             estudiante.nombre = nombreTextBox.Text;
             estudiante.apellidoPaterno = apellidoPaternoTextBox.Text;
             estudiante.apellidoMaterno = apellidoMaternoTextBox.Text;
             estudiante.matricula = matriculaTextBox.Text;
+
+            Debug.WriteLine(matriculaPrevia + matriculaTextBox.ToString());
+
             estudiante.programaEducativo = programaEducativoTextBox.Text;
+
+
 
             MessageBoxButtons botones = MessageBoxButtons.OK;
             DialogResult dialogResult;
-            if (estudianteDAO.actualizarEstudiante(estudiante))
+            if (estudianteDAO.actualizarEstudiante(matriculaPrevia,estudiante))
             {
                 dialogResult = System.Windows.Forms.MessageBox.Show("Se han actualizado los datos","Confirmacion", botones);
                 Debug.WriteLine(dialogResult);

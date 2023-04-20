@@ -8,46 +8,18 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using SistemaTutorias.Domain;
+using SistemaTutorias.DAO;
+
 
 namespace SistemaTutorias.DAO
 {
     internal class EstudianteDAO
     {
-        string cadenaDeConexion = "Server=192.168.1.155,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt220819981;";
-        
-
+        string cadenaDeConexion = Conexion.cadenaDeConexion;
+    
         public EstudianteDAO()
         {
 
-        }
-
-        public Boolean eliminarEstudiante(Estudiante estudiante)
-        {
-            Boolean registrado = false;
-            Int32 contador;
-            SqlConnection conexion = new SqlConnection(cadenaDeConexion);
-            SqlCommand comando;
-
-            try
-            {
-                comando = new SqlCommand($"delete from Estudiante where matricula = '{estudiante.matricula}';", conexion);
-                conexion.Open();
-                contador = comando.ExecuteNonQuery();
-
-                if (contador != 0)
-                {
-                    Debug.WriteLine($"Se eliminaron: {contador} estudiantes");
-                    registrado = true;
-                }
-            }
-            catch (Exception error)
-            {
-                Debug.WriteLine(error.Message);
-                return registrado = false;
-                throw;
-            } finally { conexion.Close(); }
-
-            return true;
         }
 
         public Boolean registrarEstudiante(Estudiante estudiante)
@@ -65,7 +37,7 @@ namespace SistemaTutorias.DAO
                     $"'{estudiante.apellidoMaterno}'," +
                     $"'{estudiante.matricula}'," +
                     $"'{estudiante.programaEducativo}', " +
-                    $"'zs{estudiante.matricula}@estudiantes.uv.mx');", conexion);
+                    $"'z{estudiante.matricula}@estudiantes.uv.mx');", conexion);
                 conexion.Open();
                 contador = comando.ExecuteNonQuery();
 
@@ -86,49 +58,7 @@ namespace SistemaTutorias.DAO
             return registrado;
         }
 
-        public Boolean actualizarEstudiante(Estudiante estudiante)
-        {
-            Boolean actualizado = false;
-            Int32 contador;
-            SqlConnection conexion = new SqlConnection(cadenaDeConexion);
-            SqlCommand comando;
-
-            try
-            {
-               
-                comando = new SqlCommand($"update Estudiante set nombre = '{estudiante.nombre}', apellidoPaterno = '{estudiante.apellidoPaterno}', apellidoMaterno ='{estudiante.apellidoMaterno}', matricula ='{estudiante.matricula}', programaEducativo = '{estudiante.programaEducativo}', correoInstitucional ='{estudiante.correoInstitucional}' where matricula = '{estudiante.matricula}';\r\n", conexion);
-                conexion.Open();
-                contador = comando.ExecuteNonQuery();
-
-                if (contador!=0)
-                {
-                    Debug.WriteLine($"Se actualizaron: {contador} lineas");
-                    actualizado = true;
-
-                }
-                else
-                {
-                    Debug.WriteLine("No se pudo actualizar");
-                }
-
-
-            }
-            catch (Exception error)
-            {
-                Debug.WriteLine(error.Message);
-                return actualizado = false;
-                throw;
-                
-            }
-            finally
-            {
-                conexion.Close();
-            }
-
-
-
-            return actualizado;
-        }
+        
 
         public Estudiante getEstudiante(string matricula)
         {
@@ -233,6 +163,88 @@ namespace SistemaTutorias.DAO
 
 
             return listaEstudiantes;
+        }
+
+        public Boolean actualizarEstudiante(String matriculaPrevia, Estudiante estudiante)
+        {
+            Boolean actualizado = false;
+            Int32 contador;
+            SqlConnection conexion = new SqlConnection(cadenaDeConexion);
+            SqlCommand comando;
+
+            try
+            {
+
+                comando = new SqlCommand($"update Estudiante set " +
+                    $"nombre = '{estudiante.nombre}', " +
+                    $"apellidoPaterno = '{estudiante.apellidoPaterno}', " +
+                    $"apellidoMaterno ='{estudiante.apellidoMaterno}', " +
+                    $"matricula ='{estudiante.matricula}', " +
+                    $"programaEducativo = '{estudiante.programaEducativo}', " +
+                    $"correoInstitucional ='{estudiante.correoInstitucional}' " +
+                    $"where matricula = '{matriculaPrevia}';\r\n", conexion);
+
+                conexion.Open();
+                contador = comando.ExecuteNonQuery();
+
+                if (contador != 0)
+                {
+                    Debug.WriteLine($"Se actualizaron: {contador} lineas");
+                    actualizado = true;
+
+                }
+                else
+                {
+                    Debug.WriteLine("No se pudo actualizar");
+                }
+
+
+            }
+            catch (Exception error)
+            {
+                Debug.WriteLine(error.Message);
+                return actualizado = false;
+                throw;
+
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+
+
+            return actualizado;
+        }
+
+        public Boolean eliminarEstudiante(Estudiante estudiante)
+        {
+            Boolean registrado = false;
+            Int32 contador;
+            SqlConnection conexion = new SqlConnection(cadenaDeConexion);
+            SqlCommand comando;
+
+            try
+            {
+                comando = new SqlCommand($"delete from Estudiante where matricula = '{estudiante.matricula}';", conexion);
+                conexion.Open();
+                contador = comando.ExecuteNonQuery();
+
+                if (contador != 0)
+                {
+                    Debug.WriteLine($"Se eliminaron: {contador} estudiantes");
+                    registrado = true;
+                }
+            }
+            catch (Exception error)
+            {
+                Debug.WriteLine(error.Message);
+                return registrado = false;
+                throw;
+            }
+            finally { conexion.Close(); }
+
+            return registrado;
         }
     }
 }

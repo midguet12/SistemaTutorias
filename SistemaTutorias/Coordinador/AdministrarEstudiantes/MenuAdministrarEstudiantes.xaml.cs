@@ -91,6 +91,7 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
         private void delete_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxButtons botones = MessageBoxButtons.OK;
+            MessageBoxButtons botonesConfirmacion = MessageBoxButtons.YesNo;
 
             if (tabla.SelectedItem == null)
             {
@@ -105,18 +106,20 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
                 Estudiante estudiante = (Estudiante)tabla.SelectedItem;
                 Debug.WriteLine($"Eliminando Estudiante: {estudiante.matricula}");
                 DialogResult dialogResult;
-                
-               
 
-                if (estudianteDAO.eliminarEstudiante(estudiante))
-                {
-                    dialogResult = System.Windows.Forms.MessageBox.Show($"Estudiante {estudiante.nombre} eliminado correctamente");
 
-                    if (dialogResult.ToString() == "OK")
+                if (System.Windows.Forms.MessageBox.Show($"Desea eliminar Estudiante: {estudiante.nombre}?", "Confirmacion", botonesConfirmacion).ToString() == "Yes")
+                { 
+                    if (estudianteDAO.eliminarEstudiante(estudiante))
                     {
-                        tabla.ItemsSource = estudianteDAO.getEstudiantes();
+                        dialogResult = System.Windows.Forms.MessageBox.Show($"Estudiante {estudiante.nombre} eliminado correctamente", "Confirmacion", botones);
+
+                        if (dialogResult.ToString() == "OK")
+                        {
+                            tabla.ItemsSource = estudianteDAO.getEstudiantes();
+                        }
+
                     }
-                    
                 }
 
                 

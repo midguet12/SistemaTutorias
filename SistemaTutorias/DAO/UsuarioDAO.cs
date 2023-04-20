@@ -15,7 +15,7 @@ namespace SistemaTutorias.DAO
 {
     internal class UsuarioDAO
     {
-        string cadenaDeConexion = "Server=192.168.1.155,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt220819981;";
+        string cadenaDeConexion = "Server=DESKTOP-JKKF8L6,1433;Database=SistemaTutorias;User Id=SistemaTutorias;Password=Magt22081998;";
 
         public Usuario getUsuario(string nombreUsuario)
         {
