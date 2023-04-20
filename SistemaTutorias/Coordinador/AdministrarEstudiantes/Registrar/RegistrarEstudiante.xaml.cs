@@ -2,6 +2,7 @@
 using SistemaTutorias.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,28 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Registrar
             MessageBoxButtons botones = MessageBoxButtons.OK;
             DialogResult dialogResult;
 
-            if (estudianteDAO.registrarEstudiante(estudiante))
+            try
+            {
+                estudianteDAO.registrarEstudiante(estudiante);
+                dialogResult = System.Windows.Forms.MessageBox.Show("Se han registrado un nuevo Estudiante", "Confirmacion", botones);
+                Debug.WriteLine(dialogResult);
+                this.Close();
+            }
+            catch (SqlException error)
+            {
+                dialogResult = System.Windows.Forms.MessageBox.Show("Ya existe un estudiante con estos datos", "Fallido", botones);
+                Debug.WriteLine(dialogResult);
+                Debug.WriteLine(error.Message);
+                
+            }
+            catch (Exception error)
+            {
+                dialogResult = System.Windows.Forms.MessageBox.Show("Fallido", $"No se ha registrado el estudiante\n Error desconocido: {error.Message}", botones);
+                Debug.WriteLine(dialogResult);
+                
+            }
+
+            /*if (estudianteDAO.registrarEstudiante(estudiante))
             {
                 dialogResult = System.Windows.Forms.MessageBox.Show("Se han registrado un nuevo Estudiante", "Confirmacion", botones);
                 Debug.WriteLine(dialogResult);
@@ -53,10 +75,8 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes.Registrar
             }
             else
             {
-                dialogResult = System.Windows.Forms.MessageBox.Show("Fallido", "No se ha registrado el estudiante", botones);
-                Debug.WriteLine(dialogResult);
-                this.Close();
-            }
+                
+            }*/
         }
     }
 }

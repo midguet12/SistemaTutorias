@@ -46,16 +46,25 @@ namespace SistemaTutorias.DAO
                     Debug.WriteLine($"Se registraron: {contador} estudiantes");
                     registrado = true;
                 }
+                
+                throw new Exception();
+
+            }
+            catch (SqlException error)
+            {
+                Debug.WriteLine("Estudiante ya se encuentra registrado: " + error.Message);
+                throw;
+                
             }
             catch (Exception error)
             {
                 Debug.WriteLine(error.Message);
-                return registrado = false;
                 throw;
-            } finally { conexion.Close(); } 
 
+            } finally 
+            {conexion.Close();}
 
-            return registrado;
+            
         }
 
         
