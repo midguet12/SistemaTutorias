@@ -1,0 +1,28 @@
+﻿<Window x:Class="SistemaTutorias.Administrador.AdministrarDocentes.MenuAdministrarDocentes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaTutorias.Administrador.AdministrarDocentes"
+        mc:Ignorable="d"
+        Title="AdministrarDocentes" Height="582" Width="1084">
+    <Grid>
+        <Label Content="Docentes" HorizontalAlignment="Center" Margin="0,76,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <DataGrid x:Name="tabla" Margin="150,176,124,167" AutoGenerateColumns="False" IsReadOnly="true" CanUserAddRows="false" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="N° Empleado" Binding="{Binding Path=numeroEmpleado}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Path=nombre}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding Path=apellidoPaterno}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Apellido Materno" Binding="{Binding Path=apellidoMaterno}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Programa Educativo" Binding="{Binding Path=programaEducativo}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Correo Institucional" Binding="{Binding Path=correoInstitucional}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rol" Binding="{Binding Path=rol}" Width="auto"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Tutor" Binding="{Binding Path=tutor}" Width="auto"></DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="registrarDocente" Content="Registrar Docente" HorizontalAlignment="Left" Margin="168,478,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="editarDocente" Content="Editar Docente" HorizontalAlignment="Left" Margin="514,478,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="eliminarDocente" Content="Eliminar Docente" HorizontalAlignment="Left" Margin="837,478,0,0" VerticalAlignment="Top" Background="Red" Foreground="White"/>
+
+    </Grid>
+</Window>

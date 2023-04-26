@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Diagnostics.CodeAnalysis;
 using SistemaTutorias.Coordinador;
+using SistemaTutorias.Administrador;
 
 namespace SistemaTutorias
 {
@@ -72,7 +73,12 @@ namespace SistemaTutorias
                     case 3:
                         break;
                     case 4:
+                        MenuAdministrador menuAdministrador = new MenuAdministrador();
+                        menuAdministrador.Show();
+                        this.Close();
+
                         break;
+
                 }
                 
                 
