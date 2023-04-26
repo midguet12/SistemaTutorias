@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaTutorias.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,36 @@ namespace SistemaTutorias.Administrador.AdministrarDocentes
     /// </summary>
     public partial class MenuAdministrarDocentes : Window
     {
+        DocenteDAO docenteDAO;
+
         public MenuAdministrarDocentes()
         {
             InitializeComponent();
+
+            docenteDAO = new DocenteDAO();
+
+            tabla.ItemsSource = docenteDAO.getDocentes();
+
+
+            
+        }
+        private void editarDocente_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)
+            {
+
+            }
+        }
+        private void registrarDocente_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
+
+        private void eliminarDocente_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

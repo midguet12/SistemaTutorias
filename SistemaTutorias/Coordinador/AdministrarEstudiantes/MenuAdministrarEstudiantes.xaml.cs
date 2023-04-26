@@ -31,7 +31,7 @@ namespace SistemaTutorias.Coordinador.AdministrarEstudiantes
         {
             InitializeComponent();
             
-             estudianteDAO = new EstudianteDAO();
+            estudianteDAO = new EstudianteDAO();
 
             tabla.ItemsSource = estudianteDAO.getEstudiantes() ;
 
